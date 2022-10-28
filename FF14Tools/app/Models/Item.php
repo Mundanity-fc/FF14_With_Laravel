@@ -16,5 +16,6 @@ class Item extends Model
         'name_jp',
         'icon',
         'count',
+        'price_info'
     ];
 }

@@ -13,12 +13,13 @@ export default {
       console.log(count);
       var server=this.$refs.ServerName.value;
       console.log(server);
-      // this.$router.push({
-      //   path: '/questByID',
-      //   query: {
-      //     id: id
-      //   }
-      // });
+      var search = 'http://127.0.0.1:8000/price/' + item + ',' + count + ',' + server;
+      this.$router.push({
+        path: '/priceInfo',
+        query: {
+          search: search
+        }
+      });
     }
   }
 }

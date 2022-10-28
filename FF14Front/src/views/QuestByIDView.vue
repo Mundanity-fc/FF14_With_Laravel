@@ -64,18 +64,18 @@ export default {
           </tr>
           </tbody>
         </table>
-        <table>
+        <table v-if="QuestInfo.item_reward.length !== 0">
           <thead>
-            <tr>
-              <th><b>固定奖励</b></th>
-            </tr>
+          <tr>
+            <th><b>固定奖励</b></th>
+          </tr>
           </thead>
           <tr v-for="item in QuestInfo.item_reward">
             <td><img :src="item.icon" width="50" height="50" alt=""></td>
             <td>{{item.count}}x {{item.name_cn}}</td>
           </tr>
         </table>
-        <table>
+        <table v-if="QuestInfo.option_reward.length !== 0">
           <thead>
           <tr>
             <th><b>可选奖励</b></th>
@@ -84,6 +84,17 @@ export default {
           <tr v-for="item in QuestInfo.option_reward">
             <td><img :src="item.icon" width="50" height="50" alt=""></td>
             <td>{{item.count}}x {{item.name_cn}}</td>
+          </tr>
+        </table>
+        <table v-if="QuestInfo.action_reward !== ''">
+          <thead>
+          <tr>
+            <th><b>技能奖励</b></th>
+          </tr>
+          </thead>
+          <tr>
+            <td><img :src="QuestInfo.action_reward.icon" width="50" height="50" alt=""></td>
+            <td>{{QuestInfo.action_reward.name_cn}}</td>
           </tr>
         </table>
       </div>
