@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('quests', function (Blueprint $table) {
             $table->id();
-            $table->string('name_cn')->comment("任务中文名");
-            $table->string('name_en')->comment("任务英文名");
-            $table->string('name_jp')->comment("任务日文名");
+            $table->string('name_cn')->comment("任务中文名")->nullable();
+            $table->string('name_en')->comment("任务英文名")->nullable();
+            $table->string('name_jp')->comment("任务日文名")->nullable();
         });
     }
 

@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('npcs', function (Blueprint $table) {
             $table->id();
-            $table->string('name_cn')->comment("NPC中文名");
-            $table->string('name_en')->comment("NPC英文名");
-            $table->string('name_jp')->comment("NPC日文名");
+            $table->string('name_cn')->comment("NPC中文名")->nullable();
+            $table->string('name_en')->comment("NPC英文名")->nullable();
+            $table->string('name_jp')->comment("NPC日文名")->nullable();
         });
     }
 

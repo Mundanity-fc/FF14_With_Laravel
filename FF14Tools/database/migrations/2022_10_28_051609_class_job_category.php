@@ -11,16 +11,16 @@ return new class extends Migration
      *
      * @return void
      */
+
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('ClassJobCategory', function (Blueprint $table) {
             $table->id();
-            $table->string('name_cn')->comment("物品中文名")->nullable();
-            $table->string('name_en')->comment("物品英文名")->nullable();
-            $table->string('name_jp')->comment("物品日文名")->nullable();
+            $table->string('name_cn')->comment("职业类型中文名")->nullable();
+            $table->string('name_en')->comment("职业类型英文名")->nullable();
+            $table->string('name_jp')->comment("职业类型日文名")->nullable();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        //
     }
 };

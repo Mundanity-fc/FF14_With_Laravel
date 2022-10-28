@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('actions', function (Blueprint $table) {
             $table->id();
-            $table->string('name_cn')->comment("技能中文名");
-            $table->string('name_en')->comment("技能英文名");
-            $table->string('name_jp')->comment("技能日文名");
+            $table->string('name_cn')->comment("技能中文名")->nullable();
+            $table->string('name_en')->comment("技能英文名")->nullable();
+            $table->string('name_jp')->comment("技能日文名")->nullable();
         });
     }
 

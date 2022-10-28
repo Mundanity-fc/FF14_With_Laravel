@@ -11,13 +11,14 @@ return new class extends Migration
      *
      * @return void
      */
+
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('JournalCategory', function (Blueprint $table) {
             $table->id();
-            $table->string('name_cn')->comment("物品中文名")->nullable();
-            $table->string('name_en')->comment("物品英文名")->nullable();
-            $table->string('name_jp')->comment("物品日文名")->nullable();
+            $table->string('name_cn')->comment("任务分类中文名")->nullable();
+            $table->string('name_en')->comment("任务分类英文名")->nullable();
+            $table->string('name_jp')->comment("任务分类日文名")->nullable();
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        //
     }
 };
