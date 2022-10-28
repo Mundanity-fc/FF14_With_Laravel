@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Models\Quest;
 
 class QuestSearch extends Controller
 {
 
     function GetInfo($QuestID = '0'){
+
         $response = Http::get('https://xivapi.com'.'/quest/'.$QuestID);
         $data = $response->body();
         $data = json_decode($data);
