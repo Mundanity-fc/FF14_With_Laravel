@@ -58,7 +58,7 @@ class QuestSearch extends Controller
         {
             $item0 = Item::find($jsonData->ItemReward0->ID);
             $item0->fill([
-                'icon' => $jsonData->ItemReward0->Icon,
+                'icon' => 'https://xivapi.com'.$jsonData->ItemReward0->Icon,
                 'count' => $jsonData->ItemCountReward0
             ]);
             $item_reward[] = $item0;
@@ -67,7 +67,7 @@ class QuestSearch extends Controller
         {
             $item1 = Item::find($jsonData->ItemReward1->ID);
             $item1->fill([
-                'icon' => $jsonData->ItemReward1->Icon,
+                'icon' => 'https://xivapi.com'.$jsonData->ItemReward1->Icon,
                 'count' => $jsonData->ItemCountReward1
             ]);
             $item_reward[] = $item1;
@@ -76,7 +76,7 @@ class QuestSearch extends Controller
         {
             $item2 = Item::find($jsonData->ItemReward2->ID);
             $item2->fill([
-                'icon' => $jsonData->ItemReward2->Icon,
+                'icon' => 'https://xivapi.com'.$jsonData->ItemReward2->Icon,
                 'count' => $jsonData->ItemCountReward2
             ]);
             $item_reward[] = $item2;
@@ -85,7 +85,7 @@ class QuestSearch extends Controller
         {
             $item3 = Item::find($jsonData->ItemReward3->ID);
             $item3->fill([
-                'icon' => $jsonData->ItemReward3->Icon,
+                'icon' => 'https://xivapi.com'.$jsonData->ItemReward3->Icon,
                 'count' => $jsonData->ItemCountReward3
             ]);
             $item_reward[] = $item3;
@@ -94,7 +94,7 @@ class QuestSearch extends Controller
         {
             $item4 = Item::find($jsonData->ItemReward4->ID);
             $item4->fill([
-                'icon' => $jsonData->ItemReward4->Icon,
+                'icon' => 'https://xivapi.com'.$jsonData->ItemReward4->Icon,
                 'count' => $jsonData->ItemCountReward4
             ]);
             $item_reward[] = $item4;
@@ -103,7 +103,7 @@ class QuestSearch extends Controller
         {
             $item5 = Item::find($jsonData->ItemReward5->ID);
             $item5->fill([
-                'icon' => $jsonData->ItemReward5->Icon,
+                'icon' => 'https://xivapi.com'.$jsonData->ItemReward5->Icon,
                 'count' => $jsonData->ItemCountReward5
             ]);
             $item_reward[] = $item5;
@@ -112,7 +112,7 @@ class QuestSearch extends Controller
         {
             $item6 = Item::find($jsonData->ItemReward6->ID);
             $item6->fill([
-                'icon' => $jsonData->ItemReward6->Icon,
+                'icon' => 'https://xivapi.com'.$jsonData->ItemReward6->Icon,
                 'count' => $jsonData->ItemCountReward6
             ]);
             $item_reward[] = $item6;
@@ -122,7 +122,7 @@ class QuestSearch extends Controller
         {
             $option_item0 = Item::find($jsonData->OptionalItemReward0->ID);
             $option_item0->fill([
-                'icon' => $jsonData->OptionalItemReward0->Icon,
+                'icon' => 'https://xivapi.com'.$jsonData->OptionalItemReward0->Icon,
                 'count' => $jsonData->OptionalItemCountReward0
             ]);
             $option_reward[] = $option_item0;
@@ -131,7 +131,7 @@ class QuestSearch extends Controller
         {
             $option_item1 = Item::find($jsonData->OptionalItemReward1->ID);
             $option_item1->fill([
-                'icon' => $jsonData->OptionalItemReward1->Icon,
+                'icon' => 'https://xivapi.com'.$jsonData->OptionalItemReward1->Icon,
                 'count' => $jsonData->OptionalItemCountReward1
             ]);
             $option_reward[] = $option_item1;
@@ -140,7 +140,7 @@ class QuestSearch extends Controller
         {
             $option_item2 = Item::find($jsonData->OptionalItemReward2->ID);
             $option_item2->fill([
-                'icon' => $jsonData->OptionalItemReward2->Icon,
+                'icon' => 'https://xivapi.com'.$jsonData->OptionalItemReward2->Icon,
                 'count' => $jsonData->OptionalItemCountReward2
             ]);
             $option_reward[] = $option_item2;
@@ -149,7 +149,7 @@ class QuestSearch extends Controller
         {
             $option_item3 = Item::find($jsonData->OptionalItemReward3->ID);
             $option_item3->fill([
-                'icon' => $jsonData->OptionalItemReward3->Icon,
+                'icon' => 'https://xivapi.com'.$jsonData->OptionalItemReward3->Icon,
                 'count' => $jsonData->OptionalItemCountReward3
             ]);
             $option_reward[] = $option_item3;
@@ -158,7 +158,7 @@ class QuestSearch extends Controller
         {
             $option_item4 = Item::find($jsonData->OptionalItemReward4->ID);
             $option_item4->fill([
-                'icon' => $jsonData->OptionalItemReward4->Icon,
+                'icon' => 'https://xivapi.com'.$jsonData->OptionalItemReward4->Icon,
                 'count' => $jsonData->OptionalItemCountReward4
             ]);
             $option_reward[] = $option_item4;
@@ -167,7 +167,7 @@ class QuestSearch extends Controller
         if ($jsonData->ActionReward->ID != null){
             $action_reward = Action::find($jsonData->ActionReward->ID);
             $action_reward->fill([
-                'icon' => '$jsonData->ActionReward->IconHD'
+                'icon' => 'https://xivapi.com'.$jsonData->ActionReward->IconHD
             ]);
         }
 
@@ -191,8 +191,8 @@ class QuestSearch extends Controller
         $genre = DB::select($genreql)[0];
         $data->fill(
             [
-                'icon' => $jsonData->Icon,
-                'banner' => $jsonData->Banner,
+                'icon' => 'https://xivapi.com'.$jsonData->Icon,
+                'banner' => 'https://xivapi.com'.$jsonData->IconHD,
                 'gil_reward' => $jsonData->GilReward,
                 'exp_reward' => $jsonData->ExperiencePoints,
                 'item_reward' => $item_reward,
@@ -214,7 +214,7 @@ class QuestSearch extends Controller
     }
 
     protected $searchCondition = "?columns=ID,
-        Banner,
+        IconHD,
         PlaceName.ID,
         GilReward,
         ExperiencePoints,
