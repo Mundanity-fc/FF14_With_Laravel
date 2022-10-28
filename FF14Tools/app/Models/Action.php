@@ -13,6 +13,7 @@ class Action extends Model
         'id',
         'name_cn',
         'name_en',
-        'name_jp'
+        'name_jp',
+        'icon'
     ];
 }

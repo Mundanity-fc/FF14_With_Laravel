@@ -13,6 +13,20 @@ class Quest extends Model
         'id',
         'name_cn',
         'name_en',
-        'name_jp'
+        'name_jp',
+        'start_place',
+        'start_npc',
+        'end_npc',
+        'gil_reward',
+        'exp_reward',
+        'item_reward',
+        'option_reward',
+        'catalyst_reward',
+        'action_reward',
+        'banner',
+        'icon',
+        'job',
+        'category',
+        'genre'
     ];
 }
