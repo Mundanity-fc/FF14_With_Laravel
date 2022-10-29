@@ -21,7 +21,7 @@ class UserController extends Controller
             'password.required' => '请输入密码',
         ]);
         if ($validator->fails()) {
-            return response()->json($this->error($validator->errors()->first()), 200, [], \JSON_PRETTY_PRINT);
+            return response()->json($validator->messages(), 200, [], \JSON_PRETTY_PRINT);
         }
         $user = User::where('email', '=', $request->email)->first();
         if (!$user || !Hash::check($request->password, $user->password)) {
@@ -34,5 +34,25 @@ class UserController extends Controller
             'token' => $token
         ];
         return response()->json($data, 200, [], \JSON_PRETTY_PRINT);
+    }
+
+    public function store(Request $request)
+    {
+        $rules = [
+            'name' => 'required|unique:users|max:50',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => 'required|confirmed|max:32'
+        ];
+        $input = $request->only('name','email','password', 'password_confirmation');
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()) {
+            return response()->json($validator->messages(), 200, [], \JSON_PRETTY_PRINT);
+        }
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        return response()->json('成功注册', 200, [], \JSON_PRETTY_PRINT);
     }
 }

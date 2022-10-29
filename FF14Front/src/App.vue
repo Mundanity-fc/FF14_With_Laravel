@@ -22,7 +22,7 @@ export default {
   <header>
     <div class="wrapper">
       <HelloWorld v-if="this.$store.state.token === ''" msg="欢迎！"/>
-      <HelloWorld v-if="this.$store.state.token !== ''" :msg="this.$store.state.user.name"/>
+      <HelloWorld v-if="this.$store.state.token !== ''" :msg="`欢迎您，`+this.$store.state.user.name"/>
       <nav>
         <RouterLink to="/">主页</RouterLink>
         <RouterLink to="/quest">任务</RouterLink>

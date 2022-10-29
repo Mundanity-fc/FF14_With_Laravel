@@ -7,9 +7,6 @@ export default {
   },
 
   methods:{
-    save(){
-      console.log('2333')
-    },
     postLogin(){
       console.log(this.$store);
       var res;
