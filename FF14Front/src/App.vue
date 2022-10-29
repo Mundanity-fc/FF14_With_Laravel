@@ -3,15 +3,38 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 
+<script>
+export default {
+  data() {
+    return {
+      token:null,
+      user:null
+    }
+  },
+  props:['token', 'user'],
+
+  created() {
+  },
+
+  methods: {
+    test(){
+      console.log(this.$user)
+    }
+  }
+}
+</script>
+
 <template>
   <header>
     <div class="wrapper">
-      <HelloWorld msg="欢迎！" />
+      <HelloWorld msg="欢迎！" @click="test"/>
       <nav>
         <RouterLink to="/">主页</RouterLink>
         <RouterLink to="/quest">任务</RouterLink>
         <RouterLink to="/price">价格</RouterLink>
         <RouterLink to="/translate">翻译</RouterLink>
+        <RouterLink v-if="this.user === null" to="/login">登录</RouterLink>
+        <RouterLink v-if="this.user === null" to="/register">注册</RouterLink>
       </nav>
     </div>
   </header>
