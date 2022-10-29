@@ -2,21 +2,21 @@
 export default {
   data() {
     return {
-      target : null
+      target: null
     }
   },
   created() {
     this.target = {
-      id:'',
-      name_cn:'',
-      name_en:'',
-      name_jp:''
+      id: '',
+      name_cn: '',
+      name_en: '',
+      name_jp: ''
     }
   },
-  methods:{
-    search(){
-      var type=this.$refs.Type.value;
-      var name=this.$refs.Name.value;
+  methods: {
+    search() {
+      var type = this.$refs.Type.value;
+      var name = this.$refs.Name.value;
       var search = 'http://127.0.0.1:8000/translate/' + type + ',' + name;
       console.log(search)
       fetch(search)
@@ -32,13 +32,13 @@ export default {
     <div class="uk-card uk-card-secondary uk-card-body uk-card-large">
       <form class="uk-search uk-search-default">
         <div class="uk-margin">
-          <select class="uk-select" aria-label="Select" ref="Type">
+          <select ref="Type" aria-label="Select" class="uk-select">
             <option>任务</option>
             <option>技能</option>
             <option>道具</option>
           </select>
         </div>
-        <input class="uk-search-input" type="search" placeholder="对象名称" aria-label="Search" ref="Name">
+        <input ref="Name" aria-label="Search" class="uk-search-input" placeholder="对象名称" type="search">
       </form>
       <button class="uk-button uk-button-default" @click="search">搜索</button>
       <table class="uk-table uk-table-small uk-table-hover">

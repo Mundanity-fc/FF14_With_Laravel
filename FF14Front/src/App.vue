@@ -1,20 +1,17 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
+import {RouterLink, RouterView} from 'vue-router'
+import HelloWorld from './components/HelloWorld.vue'</script>
 
 <script>
 export default {
   data() {
-    return {
-    }
+    return {}
   },
 
   created() {
   },
 
-  methods: {
-  }
+  methods: {}
 }
 </script>
 
@@ -35,7 +32,7 @@ export default {
     </div>
   </header>
 
-  <RouterView />
+  <RouterView/>
 </template>
 
 <style scoped>

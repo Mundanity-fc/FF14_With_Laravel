@@ -21,11 +21,11 @@ export default {
   <main>
     <div class="uk-card uk-card-secondary uk-card-body uk-card-large">
       <div class="uk-width-auto">
-        <img class="uk-comment-avatar" :src="QuestInfo.icon" width="80" height="80">
+        <img :src="QuestInfo.icon" class="uk-comment-avatar" height="80" width="80">
       </div>
       <div class="uk-width-expand">
         <h3 class="uk-card-title">{{ QuestInfo.name_cn }}</h3>
-        <img class="uk-comment-avatar" :src="QuestInfo.banner" alt="无背景图">
+        <img :src="QuestInfo.banner" alt="无背景图" class="uk-comment-avatar">
         <table class="uk-table uk-table-small uk-table-hover">
           <tbody>
           <tr>
@@ -71,8 +71,8 @@ export default {
           </tr>
           </thead>
           <tr v-for="item in QuestInfo.item_reward">
-            <td><img :src="item.icon" width="50" height="50" alt=""></td>
-            <td>{{item.count}}x {{item.name_cn}}</td>
+            <td><img :src="item.icon" alt="" height="50" width="50"></td>
+            <td>{{ item.count }}x {{ item.name_cn }}</td>
           </tr>
         </table>
         <table v-if="QuestInfo.option_reward.length !== 0">
@@ -82,8 +82,8 @@ export default {
           </tr>
           </thead>
           <tr v-for="item in QuestInfo.option_reward">
-            <td><img :src="item.icon" width="50" height="50" alt=""></td>
-            <td>{{item.count}}x {{item.name_cn}}</td>
+            <td><img :src="item.icon" alt="" height="50" width="50"></td>
+            <td>{{ item.count }}x {{ item.name_cn }}</td>
           </tr>
         </table>
         <table v-if="QuestInfo.action_reward !== ''">
@@ -93,8 +93,8 @@ export default {
           </tr>
           </thead>
           <tr>
-            <td><img :src="QuestInfo.action_reward.icon" width="50" height="50" alt=""></td>
-            <td>{{QuestInfo.action_reward.name_cn}}</td>
+            <td><img :src="QuestInfo.action_reward.icon" alt="" height="50" width="50"></td>
+            <td>{{ QuestInfo.action_reward.name_cn }}</td>
           </tr>
         </table>
       </div>

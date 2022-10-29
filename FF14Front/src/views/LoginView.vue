@@ -2,23 +2,22 @@
 
 export default {
   data() {
-    return {
-    }
+    return {}
   },
 
-  methods:{
-    postLogin(){
+  methods: {
+    postLogin() {
       console.log(this.$store);
       var res;
-      var e=this.$refs.email.value;
-      var p=this.$refs.password.value;
+      var e = this.$refs.email.value;
+      var p = this.$refs.password.value;
       const params = new URLSearchParams();
       params.append('email', e);
       params.append('password', p);
-      this.$store.state.axios.post('http://127.0.0.1:8000/api/login',params)
+      this.$store.state.axios.post('http://127.0.0.1:8000/api/login', params)
           .then(response => {
             let data = response.data
-            if (data !== '错误'){
+            if (data !== '错误') {
               console.log(data)
               this.$store.commit('setToken', data.token);
               this.$store.commit('setUser', data.user);
@@ -43,17 +42,17 @@ export default {
           <legend class="uk-legend">登录</legend>
 
           <div class="uk-margin">
-            <input class="uk-input" type="text" placeholder="邮箱地址" aria-label="Input" ref="email">
+            <input ref="email" aria-label="Input" class="uk-input" placeholder="邮箱地址" type="text">
           </div>
 
           <div class="uk-margin">
-            <input class="uk-input" type="password" placeholder="密码" aria-label="Input" ref="password">
+            <input ref="password" aria-label="Input" class="uk-input" placeholder="密码" type="password">
           </div>
 
 
         </fieldset>
       </form>
-      <hr />
+      <hr/>
       <button class="uk-button uk-button-default" @click="postLogin">Submit</button>
     </div>
 

@@ -13,8 +13,8 @@ export default {
         .then(res => res.json())
         .then(data => (this.Item = data))
   },
-  methods:{
-    printUnixTime(unix){
+  methods: {
+    printUnixTime(unix) {
       var date = new Date(unix * 1000);
       var year = date.getFullYear();
       var month = date.getMonth();
@@ -38,7 +38,7 @@ export default {
           <td><h3 class="uk-text-center">{{ this.Item.name_cn }}</h3></td>
         </tr>
       </table>
-      <hr />
+      <hr/>
       <table class="uk-table uk-table-hover uk-table-small uk-table-justify">
         <tr>
           <td><b>目前全体平均价格</b></td>
@@ -77,7 +77,7 @@ export default {
           <td>{{ this.Item.price_info.maxPriceHQ }}</td>
         </tr>
       </table>
-      <hr />
+      <hr/>
       <h4 v-if="this.Item.price_info.listings !== null">待售列表</h4>
       <table v-if="this.Item.price_info.listings !== null" class="uk-table uk-table-hover uk-table-justify ">
         <tr>

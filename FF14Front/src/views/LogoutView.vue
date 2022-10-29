@@ -1,8 +1,7 @@
 <script>
 export default {
   data() {
-    return {
-    }
+    return {}
   },
   created() {
     this.$store.commit('delToken');
@@ -10,9 +9,7 @@ export default {
       path: '/'
     });
   },
-  methods:{
-
-  }
+  methods: {}
 }
 </script>
 
