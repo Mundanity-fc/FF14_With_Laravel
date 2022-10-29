@@ -4,41 +4,35 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Hash;
+use App\Models\User;
+use Validator;
 
 class UserController extends Controller
 {
-    public function login(Request $request) {
-        $result = false;
-        $message = '';
-        $user = [];
-        $credentials = $request->only('email', 'password');
-        if (\Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            $result = true;
-        } else {
-            $message = 'EmailまたはPasswordが間違っています。';
+    public function login(Request $request)
+    {
+        $error = '错误';
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+            'password' => 'required'
+        ], [
+            'email.required' => '请输入邮箱',
+            'password.required' => '请输入密码',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($this->error($validator->errors()->first()), 200, [], \JSON_PRETTY_PRINT);
         }
-        return response()->json(['result' => $result, 'message' => $message]);
-    }
-
-
-    public function logout(Request $request) {
-        $result = true;
-        $message = 'ログアウトしました。';
-        \Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return response()->json(['result' => $result, 'message' => $message]);
-    }
-
-
-    public function auth() {
-        $result = false;
-        $user = [];
-        if (Auth::check()) {
-            $user = \Auth::user();
-            $result = true;
+        $user = User::where('email', '=', $request->email)->first();
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response()->json($error, 200, [], \JSON_PRETTY_PRINT);
         }
-        return response()->json(['result' => $result, 'user' => $user]);
+        // 发行令牌
+        $token = $user->createToken('console-token')->plainTextToken;
+        $data = [
+            'user' => $user,
+            'token' => $token
+        ];
+        return response()->json($data, 200, [], \JSON_PRETTY_PRINT);
     }
 }

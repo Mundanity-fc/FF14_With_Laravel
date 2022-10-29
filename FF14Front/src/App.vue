@@ -7,19 +7,13 @@ import HelloWorld from './components/HelloWorld.vue'
 export default {
   data() {
     return {
-      token:null,
-      user:null
     }
   },
-  props:['token', 'user'],
 
   created() {
   },
 
   methods: {
-    test(){
-      console.log(this.$user)
-    }
   }
 }
 </script>
@@ -27,14 +21,16 @@ export default {
 <template>
   <header>
     <div class="wrapper">
-      <HelloWorld msg="欢迎！" @click="test"/>
+      <HelloWorld v-if="this.$store.state.token === ''" msg="欢迎！"/>
+      <HelloWorld v-if="this.$store.state.token !== ''" :msg="this.$store.state.user.name"/>
       <nav>
         <RouterLink to="/">主页</RouterLink>
         <RouterLink to="/quest">任务</RouterLink>
         <RouterLink to="/price">价格</RouterLink>
         <RouterLink to="/translate">翻译</RouterLink>
-        <RouterLink v-if="this.user === null" to="/login">登录</RouterLink>
-        <RouterLink v-if="this.user === null" to="/register">注册</RouterLink>
+        <RouterLink v-if="this.$store.state.token === ''" to="/login">登录</RouterLink>
+        <RouterLink v-if="this.$store.state.token === ''" to="/register">注册</RouterLink>
+        <RouterLink v-if="this.$store.state.token !== ''" to="/logout">登出</RouterLink>
       </nav>
     </div>
   </header>

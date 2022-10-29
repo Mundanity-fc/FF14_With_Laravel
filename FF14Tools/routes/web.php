@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PriceSearch;
 use App\Http\Controllers\QuestSearch;
 use App\Http\Controllers\TranlationSearch;
+use App\Http\Controllers\UserController;
 
 
 Route::get('/quest/{QuestID}', [QuestSearch::class, 'GetInfoByID']);

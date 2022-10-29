@@ -9,7 +9,7 @@ export default {
   created() {
     var id = this.$route.query.id
     var search = 'http://127.0.0.1:8000/quest/' + id
-    console.log(search)
+    console.log(search);
     fetch(search)
         .then(res => res.json())
         .then(data => (this.QuestInfo = data))

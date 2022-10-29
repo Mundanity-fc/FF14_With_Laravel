@@ -4,8 +4,14 @@ export default {
     return {
     }
   },
-
+  created() {
+    this.$store.commit('delToken');
+    this.$router.push({
+      path: '/'
+    });
+  },
   methods:{
+
   }
 }
 </script>
@@ -13,7 +19,7 @@ export default {
 <template>
   <main>
     <div class="uk-card uk-card-secondary uk-card-body uk-card-large">
-      <h3>请从左侧的菜单中选择对应的功能项</h3>
+      <h3>您已退出</h3>
     </div>
 
   </main>
