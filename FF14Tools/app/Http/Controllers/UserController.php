@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Http\Request;
-use Hash;
 use App\Models\User;
+use Hash;
+use Illuminate\Http\Request;
 use Validator;
 
 class UserController extends Controller
@@ -43,7 +43,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users|max:255',
             'password' => 'required|confirmed|max:32'
         ];
-        $input = $request->only('name','email','password', 'password_confirmation');
+        $input = $request->only('name', 'email', 'password', 'password_confirmation');
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 200, [], \JSON_PRETTY_PRINT);
